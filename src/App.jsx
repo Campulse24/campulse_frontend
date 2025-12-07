@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import Planner from './pages/Planner';
+import Opportunities from './pages/Opportunities';
+import Tutors from './pages/Tutors';
 
-// Protected Route Component
+// Protected Route Component with Navbar
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
 
@@ -23,7 +27,14 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return isAuthenticated ? (
+    <>
+      <Navbar />
+      {children}
+    </>
+  ) : (
+    <Navigate to="/login" replace />
+  );
 };
 
 // Public Route Component (redirect to dashboard if already logged in)
@@ -80,12 +91,36 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/planner"
+            element={
+              <ProtectedRoute>
+                <Planner />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/opportunities"
+            element={
+              <ProtectedRoute>
+                <Opportunities />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tutors"
+            element={
+              <ProtectedRoute>
+                <Tutors />
+              </ProtectedRoute>
+            }
+          />
 
           {/* Default Route */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
           {/* 404 Route */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </AuthProvider>
     </Router>

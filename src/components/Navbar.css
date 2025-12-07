@@ -1,0 +1,197 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 46, 33, 0.1);
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-links {
+    display: none;
+    flex: 1;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    color: rgba(0, 46, 33, 0.7);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: rgba(249, 220, 92, 0.1);
+    color: var(--color-dark);
+}
+
+.nav-link.active {
+    background: var(--gradient-primary);
+    color: var(--color-dark);
+    box-shadow: 0 4px 12px rgba(249, 220, 92, 0.3);
+}
+
+.navbar-user {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 0.875rem;
+}
+
+.user-level {
+    font-size: 0.75rem;
+    color: rgba(0, 46, 33, 0.6);
+}
+
+.logout-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.logout-btn:hover {
+    background: var(--color-error);
+    color: var(--color-white);
+    transform: scale(1.05);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 46, 33, 0.05);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--color-dark);
+    transition: all var(--transition-base);
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(0, 46, 33, 0.1);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    border-top: 1px solid rgba(0, 46, 33, 0.1);
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    animation: slideInLeft 0.3s;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    color: rgba(0, 46, 33, 0.7);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+.mobile-nav-link:hover {
+    background: rgba(249, 220, 92, 0.1);
+    color: var(--color-dark);
+}
+
+.mobile-nav-link.active {
+    background: var(--gradient-primary);
+    color: var(--color-dark);
+}
+
+.mobile-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-top: var(--spacing-md);
+}
+
+.mobile-logout-btn:hover {
+    background: var(--color-error);
+    color: var(--color-white);
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+    .navbar-links {
+        display: flex;
+    }
+
+    .navbar-user {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+}
